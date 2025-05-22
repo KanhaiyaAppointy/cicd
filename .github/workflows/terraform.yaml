@@ -1,0 +1,46 @@
+name: Terraform Deploy (Cloud Armor)
+
+on:
+  push:
+    paths:
+      - 'cloud-armor/**'
+    branches:
+      - main
+
+jobs:
+  terraform:
+    name: Terraform Plan and Apply
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: cloud-armor
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: 1.6.0
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Validate
+      run: terraform validate
+
+    - name: Terraform Plan
+      run: terraform plan -input=false
+
+    - name: Terraform Apply (Auto-approved)
+      env:
+        TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}
+        TF_VAR_region: ${{ secrets.GCP_REGION }}
+      run: terraform apply -auto-approve
