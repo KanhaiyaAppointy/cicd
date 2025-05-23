@@ -1,4 +1,4 @@
-project_id           = "your-project-id"
+project_id           = "Your-project-id"
 region               = "us-central1"
 default_preview_mode = true
 
