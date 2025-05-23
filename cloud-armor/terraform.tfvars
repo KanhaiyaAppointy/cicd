@@ -1,4 +1,4 @@
-project_id           = "Your-project-id"
+project_id           = "mathnasium-352013"
 region               = "us-central1"
 default_preview_mode = true
 
