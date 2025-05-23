@@ -21,9 +21,4 @@ security_policies = {
     rate_limit_count    = 200
     rate_limit_interval = 30
   }
-api4-throttle = {
-    endpoints           = ["/index5.html"]
-    rate_limit_count    = 200
-    rate_limit_interval = 30
-  }
 }
