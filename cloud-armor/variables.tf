@@ -25,7 +25,3 @@ variable "security_policies" {
   }))
 }
 
-variable "credentials_file" {
-  description = "Path to the GCP service account JSON key file"
-  type        = string
-}
