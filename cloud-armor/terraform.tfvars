@@ -15,4 +15,10 @@ security_policies = {
     rate_limit_count    = 50
     rate_limit_interval = 60
   }
+
+  api3-throttle = {
+    endpoints           = ["/index4.html"]
+    rate_limit_count    = 200
+    rate_limit_interval = 30
+  }
 }
